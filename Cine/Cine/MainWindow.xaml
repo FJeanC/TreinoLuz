@@ -1,0 +1,37 @@
+﻿<Window x:Class="Cine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cine"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" SelectedItem="{Binding CinemaSelecionado}" ItemsSource="{Binding listaDeCinemas}" Margin="10,56,0,142" Height="NaN" Width="343" HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" Width="Auto" DisplayMemberBinding="{Binding Nome}" />
+                    <GridViewColumn Header="Cidade" Width="Auto" DisplayMemberBinding="{Binding Cidade}"/>
+                    <GridViewColumn Header="Nº Salas" Width="Auto" DisplayMemberBinding="{Binding NumeroDeSalas}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" SelectedItem="{Binding FilmeSelecionado}" ItemsSource="{Binding CinemaSelecionado.ListaFilmes}" Margin="428,56,0,142" Height="NaN" Width="343" HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nome" Width="Auto" DisplayMemberBinding="{Binding Nome}" />
+                    <GridViewColumn Header="Diretor" Width="Auto" DisplayMemberBinding="{Binding Diretor}"/>
+                    <GridViewColumn Header="Duração" Width="Auto" DisplayMemberBinding="{Binding DuracaoMinutos}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Command="{Binding Add}" Content="Add" HorizontalAlignment="Left" Margin="10,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding Remove}" Content="Remove" HorizontalAlignment="Left" Margin="132,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding Update}" Content="Edit" HorizontalAlignment="Left" Margin="253,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding AddMovies}" Content="Add Filme" HorizontalAlignment="Left" Margin="428,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding RemoveMovies}" Content="Remove Filme" HorizontalAlignment="Left" Margin="550,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+        <Button Command="{Binding UpdateMovies}" Content="Edit Filme" HorizontalAlignment="Left" Margin="671,362,0,0" VerticalAlignment="Top" Click="Button_Click" Height="26" Width="100"/>
+
+    </Grid>
+</Window>
